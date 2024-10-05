@@ -98,6 +98,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 14px;
+        background-color: #fff;
     }
 
     .form input {
@@ -151,12 +152,14 @@
     }
 
 
-    .dark {
+    .dark,
+    .nav {
         background-color: #101723;
         color: #fff;
     }
 
-    .color {
+    .color,
+    .darkmode {
         color: #fff;
     }
 
@@ -164,15 +167,6 @@
         border: none;
         background-color: inherit;
         color: #000;
-    }
-
-    .darkmode {
-        color: #fff;
-    }
-
-    .nav {
-        background-color: #101723;
-        color: #fff;
     }
 
     .sidebar__wrapper {
@@ -187,4 +181,7 @@
         align-items: center;
         gap: 10px;
 
+    }
+    .send {
+        color: #000;
     }
