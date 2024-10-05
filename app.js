@@ -4,6 +4,12 @@ const msgContainer = document.querySelector(".msg__container");
 const sidebar = document.querySelector(".sidebar");
 const hamburger = document.querySelector(".hamburger");
 const openButton = document.querySelector(".navbar__logo .open"); // "Open" ikonkasi
+const moonEL = document.querySelector(".moon")
+const darkMode = document.querySelector(".darkMode")
+const navbar = document.querySelector(".navbar")
+const send = document.querySelector(".send")
+
+
 
 const TEXT = [
     "salom",
@@ -29,22 +35,20 @@ const TEXT = [
     "hop",
     "otiribman",
     "Assalomu alaikum 🙂",
-];
+]
 
-// Vaqtni formatlash
 function formatTime(date) {
     let hours = date.getHours().toString().padStart(2, '0');
     let minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
 }
 
-// Foydalanuvchi xabarini yuborish
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const value = input.value;
     if (value === "") {
-        return; // Bo'sh xabar yubormaslik
+        return
     }
 
     const now = new Date();
@@ -54,12 +58,10 @@ form.addEventListener("submit", (e) => {
     userMsg.classList.add("msg", "me");
     userMsg.innerHTML = `<p>${value}</p><span>${formattedTime}</span>`;
     msgContainer.appendChild(userMsg);
-    input.value = ""; // Xabar yuborilgandan so'ng inputni tozalash
+    input.value = ""
+    botMsg()
+})
 
-    botMsg(); // Botning javobini yuborish
-});
-
-// Botning xabarini yuborish
 function botMsg() {
     setTimeout(() => {
         let index = Math.floor(Math.random() * TEXT.length);
@@ -72,17 +74,25 @@ function botMsg() {
     }, 2500);
 }
 
-// Sidebar holatini saqlash uchun o'zgaruvchi
 let sidebarOpen = false;
 
-// Open tugmasini bosganda sidebarni ochish
 openButton.addEventListener("click", () => {
-    sidebar.style.transform = "translateX(0%)"; // Sidebarni ochish
-    sidebarOpen = true; // Sidebar holatini yangilash
+    sidebar.style.transform = "translateX(0%)";
+    sidebarOpen = true
 });
 
-// Hamburger tugmasini bosganda sidebarni yopish
 hamburger.addEventListener("click", () => {
-    sidebar.style.transform = "translateX(-100%)"; // Sidebarni yopish
-    sidebarOpen = false; // Sidebar holatini yangilash
+    sidebar.style.transform = "translateX(-100%)";
+    sidebarOpen = false;
+});
+
+
+moonEL.addEventListener("click", () => {
+    sidebar.classList.toggle("dark");
+    navbar.classList.toggle("nav");
+    form.classList.toggle("nav");
+    hamburger.classList.toggle("color");
+    darkMode.classList.toggle("color");
+    input.style.color = "white"
+    send.style.color = "white"
 });
