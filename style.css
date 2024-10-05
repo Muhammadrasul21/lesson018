@@ -19,6 +19,7 @@
         border-radius: 40px;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     .navbar {
@@ -107,4 +108,24 @@
         border-radius: 20px;
         padding: 2px 6px;
         background-color: inherit;
+    }
+
+    .sidebar {
+        position: absolute;
+        padding: 10px;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background-color: #101723;
+        border-radius: 29px 0 0 29px;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        color: #fff;
+    }
+
+    .hamburger {
+        color: #fff;
+        flex-direction: right;
     }
