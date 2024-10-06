@@ -8,6 +8,12 @@ const moonEL = document.querySelector(".moon")
 const darkMode = document.querySelector(".darkMode")
 const navbar = document.querySelector(".navbar")
 const send = document.querySelector(".send")
+const closeSearch = document.querySelector(".close__search")
+const search = document.querySelector(".search")
+const openSearch = document.querySelector(".open__search")
+const searchINput = document.querySelector(".search input")
+
+console.log(searchINput);
 
 
 
@@ -27,7 +33,6 @@ const TEXT = [
     "qattas",
     "km bilan siz",
     "ozizchi",
-    "❤️❤️❤️",
     "😊😊😊",
     "yaxshi",
     "yaxshimisiz",
@@ -86,13 +91,24 @@ hamburger.addEventListener("click", () => {
     sidebarOpen = false;
 });
 
+openSearch.addEventListener("click", () => {
+    search.style.top = "0";
+});
+
+closeSearch.addEventListener("click", () => {
+    search.style.top = "-50px";
+});
+
 
 moonEL.addEventListener("click", () => {
     sidebar.classList.toggle("dark");
     navbar.classList.toggle("nav");
+    search.classList.toggle("searchmode");
     form.classList.toggle("nav");
     hamburger.classList.toggle("color");
     darkMode.classList.toggle("color");
+    closeSearch.classList.toggle("searchmode");
+    searchINput.classList.toggle("searchmode");
     input.style.color = "white"
     send.style.color = "white"
 });

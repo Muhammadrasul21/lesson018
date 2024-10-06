@@ -182,6 +182,44 @@
         gap: 10px;
 
     }
+
     .send {
         color: #000;
+    }
+
+    .search {
+        position: absolute;
+        left: 0;
+        top: -50px;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 15px;
+        background-color: #fff;
+        transition: top 0.3s ease-in-out;
+        color: #fff;
+    }
+
+
+    .search input {
+        height: 30px;
+        width: 280px;
+        padding: 8px;
+        border: none;
+        overflow: auto;
+        background-color: inherit;
+        color: #000;
+    }
+
+    .close__search {
+        background: transparent;
+        color: #000;
+        border: none;
+    }
+
+    .searchmode {
+        background-color: #101723;
+        color: #fff !important;
     }
