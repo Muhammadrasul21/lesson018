@@ -12,6 +12,9 @@ const closeSearch = document.querySelector(".close__search")
 const search = document.querySelector(".search")
 const openSearch = document.querySelector(".open__search")
 const searchINput = document.querySelector(".search input")
+const clockSpan = document.querySelector('.navbarTop__clock span');
+const navbarTop = document.querySelector('.navbarTop');
+
 
 console.log(searchINput);
 
@@ -48,6 +51,14 @@ function formatTime(date) {
     let minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
 }
+function updateClock() {
+    const now = new Date();
+    const formattedTime = formatTime(now);
+    clockSpan.textContent = formattedTime;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -102,6 +113,7 @@ moonEL.addEventListener("click", () => {
     darkMode.classList.toggle("color");
     closeSearch.classList.toggle("searchmode");
     searchINput.classList.toggle("searchmode");
+    navbarTop.classList.toggle("nav")
     input.style.color = "white"
     send.style.color = "white"
 });
