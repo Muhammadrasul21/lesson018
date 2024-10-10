@@ -34,8 +34,6 @@ const TEXT = [
     "km bilan siz",
     "ozizchi",
     "Qanday yangiliklar bor",
-    "Oyin oynashga vaqtiz bormi?",
-    "Qachon oyin oynaymiz?",
     "😊😊😊",
     "yaxshi",
     "yaxshimisiz",
@@ -53,35 +51,27 @@ function formatTime(date) {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const value = input.value;
     if (value === "") {
-        return
+        return;
     }
-
     const now = new Date();
     const formattedTime = formatTime(now);
+    sender([value, "msg", "me"], formattedTime);
+    input.value = "";
+    input.focus()
+    botMsg();
+});
 
-    const userMsg = document.createElement("div");
-    userMsg.classList.add("msg", "me");
-    userMsg.innerHTML = `<p>${value}</p><span>${formattedTime}</span>`;
-    msgContainer.appendChild(userMsg);
-    input.value = ""
-    botMsg()
-})
 
 function botMsg() {
     setTimeout(() => {
         let index = Math.floor(Math.random() * TEXT.length);
         const now = new Date();
         const formattedTime = formatTime(now);
-        const botMsg = document.createElement("div");
-        botMsg.classList.add("msg", "bot");
-        botMsg.innerHTML = `<p>${TEXT[index]}</p><span>${formattedTime}</span>`;
-        msgContainer.appendChild(botMsg);
+        sender([TEXT[index], "msg"], formattedTime);
     }, 2500);
 }
-
 let sidebarOpen = false;
 
 openButton.addEventListener("click", () => {
@@ -115,3 +105,12 @@ moonEL.addEventListener("click", () => {
     input.style.color = "white"
     send.style.color = "white"
 });
+
+function sender(value, formattedTime) {
+    const userMsg = document.createElement("div");
+    userMsg.classList.add(...value.slice(1));
+    userMsg.innerHTML = `<p>${value[0]}</p><span>${formattedTime}</span>`;
+    msgContainer.appendChild(userMsg);
+    msgContainer.scrollTop = msgContainer.scrollHeight;
+
+}
